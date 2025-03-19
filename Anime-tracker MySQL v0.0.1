@@ -1,0 +1,104 @@
+create database anime_tracker;
+use anime_tracker;
+
+create table User (
+	UserID int primary key auto_increment,
+    username varchar (50) not null unique,
+    userpassword varchar (50) not null,
+    display_name varchar (50) not null unique,
+    email varchar (100) not null unique,
+    first_login timestamp default current_timestamp,
+    Last_login timestamp default current_timestamp on update current_timestamp
+);
+
+create table Watchlist (
+	WatchlistID int auto_increment primary key,
+    UserID int not null,
+    AnimeID int not null,
+    status ENUM('Completed', 'Watching', 'Plan to Watch'),
+    last_updated timestamp default current_timestamp on update current_timestamp
+);
+
+create table Anime (
+	AnimeID int primary key auto_increment,
+    title varchar (500) not null,
+    type ENUM('TV', 'Movie', 'ONA', 'OVA', 'Special') not null,
+    episodes int default 12,
+    status ENUM('Airing', 'Completed', 'Upcoming') not null,
+    airing_start date,
+    airing_end date null,
+    rating ENUM('1', '2', '3', '4', '5'),
+    synopsis TEXT,
+    StudioID int not null,
+    TagID int not null
+);
+
+create table Studio (
+	StudioID int auto_increment primary key,
+    studio_name varchar (255) not null,
+    rating ENUM('1', '2', '3', '4', '5')
+);
+
+create table Tags (
+	TagID int primary key auto_increment,
+    tag varchar (50) not null
+);
+
+alter table Watchlist add foreign key (UserID) references User (UserID);
+alter table Watchlist add foreign key (AnimeID) references Anime (AnimeID);
+alter table Anime add foreign key (StudioID) references Studio (StudioID);
+alter table Anime add foreign key (TagID) references Tags (TagID);
+
+insert into user (username, userpassword, display_name, email)
+values ('mirkolouis', '12345', 'MirkoLouis', 'mirkolouis33@gmail.com'),
+('serenity', '12345', 'Serenity', 'serenity@gmail.com'),
+('popoythegreat', '12345', 'Popoy123', 'popoythegreat@gmail.com'),
+('darkstalker', '12345', 'DrkStalker', 'darkstalker@gmail.com'),
+('meerko123', '12345', 'Meerko', 'meerko@gmail.com')
+;
+
+insert into tags (tag)
+values ('Action'),
+('Romance'),
+('Isekai'),
+('Comedy'),
+('Horror')
+;
+
+insert into studio (studio_name, rating)
+values ('WIT Studio', 5)
+;
+
+insert into anime (title, type, episodes, status, airing_start, airing_end, rating, synopsis, StudioID, TagID) 
+values ('One Piece', 'TV', 1152, 'Airing', '1999-10-10', null, 5, "The story follows the adventures of Monkey D. Luffy, a boy whose body gained the properties of rubber after unintentionally eating a Devil Fruit. With his crew, named the Straw Hat Pirates, Luffy explores the Grand Line in search of the world's ultimate treasure known as the 'One Piece' in order to become the next King of the Pirates.", 1, 1)
+;
+
+
+insert into watchlist (UserID, AnimeID, status)
+values (1, 1, 'Watching'),
+(2, 1, 'Watching'),
+(3, 1, 'Watching')
+;
+
+SELECT 
+    u.UserID, 
+    u.username, 
+    a.AnimeID, 
+    a.title, 
+    a.type, 
+    a.episodes, 
+    a.status AS anime_status, 
+    a.airing_start, 
+    a.airing_end, 
+    a.rating, 
+    a.synopsis, 
+    s.studio_name, 
+    t.tag, 
+    w.status AS watchlist_status, 
+    w.last_updated
+FROM watchlist w
+LEFT JOIN user u ON w.UserID = u.UserID
+LEFT JOIN anime a ON w.AnimeID = a.AnimeID
+LEFT JOIN studio s ON a.StudioID = s.StudioID
+LEFT JOIN tags t ON a.TagID = t.TagID
+WHERE u.UserID = 1;  -- Change `1` to the specific user ID
