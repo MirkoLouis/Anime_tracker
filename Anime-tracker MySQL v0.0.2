@@ -1,0 +1,126 @@
+create database anime_tracker;
+use anime_tracker;
+
+create table User (
+	UserID int primary key auto_increment,
+    username varchar (50) not null unique,
+    userpassword varchar (50) not null,
+    display_name varchar (50) not null unique,
+    email varchar (100) not null unique,
+    first_login timestamp default current_timestamp,
+    Last_login timestamp default current_timestamp on update current_timestamp
+);
+
+create table Watchlist (
+	WatchlistID int auto_increment primary key,
+    UserID int not null,
+    AnimeID int not null,
+    status ENUM('Completed', 'Watching', 'Plan to Watch'),
+    last_updated timestamp default current_timestamp on update current_timestamp
+);
+
+create table Anime (
+	AnimeID int primary key auto_increment,
+    title varchar (500) not null,
+    type ENUM('TV', 'Movie', 'ONA', 'OVA', 'Special') not null,
+    episodes int default 12,
+    status ENUM('Airing', 'Completed', 'Upcoming') not null,
+    airing_start date,
+    airing_end date null,
+    rating ENUM('1', '2', '3', '4', '5'),
+    synopsis TEXT,
+    StudioID int not null,
+    TagID int not null
+);
+
+create table Studio (
+	StudioID int auto_increment primary key,
+    studio_name varchar (255) not null,
+    rating ENUM('1', '2', '3', '4', '5')
+);
+
+create table Tags (
+	TagID int primary key auto_increment,
+    tag varchar (50) not null
+);
+
+alter table Watchlist add foreign key (UserID) references User (UserID);
+alter table Watchlist add foreign key (AnimeID) references Anime (AnimeID);
+alter table Anime add foreign key (StudioID) references Studio (StudioID);
+alter table Anime add foreign key (TagID) references Tags (TagID);
+
+ALTER TABLE studio AUTO_INCREMENT = 1;
+
+insert into user (username, userpassword, display_name, email)
+values ('mirkolouis', '12345', 'MirkoLouis', 'mirkolouis33@gmail.com'),
+('serenity', '12345', 'Serenity', 'serenity@gmail.com'),
+('popoythegreat', '12345', 'Popoy123', 'popoythegreat@gmail.com'),
+('darkstalker', '12345', 'DrkStalker', 'darkstalker@gmail.com'),
+('meerko123', '12345', 'Meerko', 'meerko@gmail.com')
+;
+
+insert into tags (tag)
+values ('Action'),
+('Romance'),
+('Isekai'),
+('Comedy'),
+('Horror')
+;
+
+insert into studio (studio_name, rating)
+values ('WIT Studio', 5),
+('Pierrot', 5),
+('8bit', 5),
+('CoMix Wave Films', 5),
+('Toei Animation', 5)
+;
+
+insert into anime (title, type, episodes, status, airing_start, airing_end, rating, synopsis, StudioID, TagID) 
+values ('One Piece', 'TV', 1152, 'Airing', '1999-10-10', null, 5, "The story follows the adventures of Monkey D. Luffy, a boy whose body gained the properties of rubber after unintentionally eating a Devil Fruit. With his crew, named the Straw Hat Pirates, Luffy explores the Grand Line in search of the world's ultimate treasure known as the 'One Piece' in order to become the next King of the Pirates.", 5, 1),
+('Naruto', 'TV', 500, 'Completed', '2007-2-15', '2017-3-23', 5, "It has been two and a half years since Naruto Uzumaki left Konohagakure, the Hidden Leaf Village, for intense training following events which fueled his desire to be stronger. Now Akatsuki, the mysterious organization of elite rogue ninja, is closing in on their grand plan which may threaten the safety of the entire shinobi world.", 1, 1),
+('Bleach', 'TV', 366, 'Completed', '2004-10-5', '2012-3-27', 5, "Ichigo Kurosaki is an ordinary high schooler—until his family is attacked by a Hollow, a corrupt spirit that seeks to devour human souls. It is then that he meets a Soul Reaper named Rukia Kuchiki, who gets injured while protecting Ichigo's family from the assailant. To save his family, Ichigo accepts Rukia's offer of taking her powers and becomes a Soul Reaper as a result.", 2, 1),
+('That Time I Got Reincarnated as a Slime', 'TV', 24, 'Completed', '2018-10-2', '2019-3-19', 5, "Thirty-seven-year-old Satoru Mikami is a typical corporate worker, who is perfectly content with his monotonous lifestyle in Tokyo, other than failing to nail down a girlfriend even once throughout his life. In the midst of a casual encounter with his colleague, he falls victim to a random assailant on the streets and is stabbed. However, while succumbing to his injuries, a peculiar voice echoes in his mind, and recites a bunch of commands which the dying man cannot make sense of.", 3, 3),
+('Your Name', 'Movie', 1, 'Completed', '2016-8-26', null, 5, "Mitsuha Miyamizu, a high school girl, yearns to live the life of a boy in the bustling city of Tokyo—a dream that stands in stark contrast to her present life in the countryside. Meanwhile in the city, Taki Tachibana lives a busy life as a high school student while juggling his part-time job and hopes for a future in architecture..", 4, 2)
+;
+
+
+insert into watchlist (UserID, AnimeID, status)
+values (1, 1, 'Watching'),
+(1, 2, 'Watching'),
+(1, 3, 'Watching'),
+(1, 4, 'Watching'),
+(1, 5, 'Watching'),
+(2, 2, 'Watching'),
+(2, 3, 'Completed'),
+(2, 4, 'Plan to Watch'),
+(2, 5, 'Plan to Watch'),
+(3, 3, 'Plan to Watch'),
+(3, 4, 'Watching'),
+(3, 5, 'Completed'),
+(4, 4, 'Plan to Watch'),
+(4, 5, 'Completed'),
+(5, 5, 'Completed')
+;
+
+SELECT 
+    u.UserID, 
+    u.username, 
+    a.AnimeID, 
+    a.title, 
+    a.type, 
+    a.episodes, 
+    a.status AS anime_status, 
+    a.airing_start, 
+    a.airing_end, 
+    a.rating, 
+    a.synopsis, 
+    s.studio_name, 
+    t.tag, 
+    w.status AS watchlist_status, 
+    w.last_updated
+FROM watchlist w
+LEFT JOIN user u ON w.UserID = u.UserID
+LEFT JOIN anime a ON w.AnimeID = a.AnimeID
+LEFT JOIN studio s ON a.StudioID = s.StudioID
+LEFT JOIN tags t ON a.TagID = t.TagID
+WHERE u.UserID = 1  -- Change `1` to the specific user ID
