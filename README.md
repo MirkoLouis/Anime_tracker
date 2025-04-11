@@ -2,8 +2,8 @@ This is my final project to a subject.
 
 **Roadmap -The progress-**
 
-Database Creation
-Updated database with 5 records per table
+* Database Creation
+- Updated database with 5 records per table
 Initial Website Development
 Collaborated with friend knowledgeable in HTML
 Created website1 using AI tools
