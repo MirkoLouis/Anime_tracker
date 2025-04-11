@@ -2,8 +2,6 @@ This is my final project to a subject.
 
 **Roadmap -The progress-**
 
-Here's your text with asterisks added to each line:
-
 * The Database creation
 * Updated the database with 5 records per table.
 * Started to create the website with my friend who knows about html
