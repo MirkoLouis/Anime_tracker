@@ -38,3 +38,8 @@ This is my final project to a subject.
 * display name fixed
 * logout button changing the navbar size fixed, also maximized the space used by spotlight animes
 * found new annoying layout thing,spotlight animes in dashboard and spotlight animes in home heights are not the same
+* added watchlist
+* added watchlist adding not dynamic YET
+* added watchlist status editing dynamic
+* added watchlist removing dynamic
+* added search function, redirects user to another route
