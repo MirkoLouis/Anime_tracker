@@ -43,3 +43,6 @@ This is my final project to a subject.
 * added watchlist status editing dynamic
 * added watchlist removing dynamic
 * added search function, redirects user to another route
+* remade search function to stay in homepage, hides all anime sections when displaying results
+* all that's left now is cleaning up
+* 
