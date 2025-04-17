@@ -46,4 +46,5 @@ This is my final project to a subject.
 * remade search function to stay in homepage, hides all anime sections when displaying results
 * all that's left now is cleaning up
 * finally made adding an anime dynamic by making the watchlist creator into a proper renderwatchlist function
+* added a favicon to the site thanks to the people in this thread https://stackoverflow.com/questions/15463199/how-to-set-custom-favicon-in-express
 * 
