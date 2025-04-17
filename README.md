@@ -45,4 +45,5 @@ This is my final project to a subject.
 * added search function, redirects user to another route
 * remade search function to stay in homepage, hides all anime sections when displaying results
 * all that's left now is cleaning up
+* finally made adding an anime dynamic by making the watchlist creator into a proper renderwatchlist function
 * 
