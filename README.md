@@ -47,4 +47,10 @@ This is my final project to a subject.
 * all that's left now is cleaning up
 * finally made adding an anime dynamic by making the watchlist creator into a proper renderwatchlist function
 * added a favicon to the site thanks to the people in this thread https://stackoverflow.com/questions/15463199/how-to-set-custom-favicon-in-express
+* managed to get the local website deployed using port forwarding
+* i got some friends to try out my website first with the 25 animes i directly inserted from the database
+* since most of my images were in 4k they werent loading in their devices, website sizing was also an issue
+* added compression dependency and immediately halved the loading process
+* friend's mentioned a few problems and i live fixed them
+* another friend mentioned a text overlapping issue which after a few minutes was fixed thanks to the guys from here https://stackoverflow.com/questions/15909489/text-overflow-ellipsis-on-two-lines
 * 
