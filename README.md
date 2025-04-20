@@ -57,4 +57,4 @@ This is my final project to a subject.
 * fixed the search filtering it now remembers the tags and changes the page numbers accordingly
 * researching lazy loading
 * implemented lazy loading using library, worked somehow but not for all images so scrapped
-* 
+* deployed my website online to test native lazy loading, it works for the most part, not all sections show up immediately, new, upcoming and featured sections do work immediately so thats good
