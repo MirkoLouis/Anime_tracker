@@ -54,4 +54,5 @@ This is my final project to a subject.
 * friend's mentioned a few problems and i live fixed them
 * another friend mentioned a text overlapping issue which after a few minutes was fixed thanks to the guys from here https://stackoverflow.com/questions/15909489/text-overflow-ellipsis-on-two-lines
 * added search filtering using tag, studio or rating currently works but it should update page numbers and prev/next buttons to remember the filter because what if more than 51 animes were passing the filter they'd need to be on a second page
+* fixed the search filtering it now remembers the tags and changes the page numbers accordingly
 * 
