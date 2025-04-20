@@ -56,3 +56,5 @@ This is my final project to a subject.
 * added search filtering using tag, studio or rating currently works but it should update page numbers and prev/next buttons to remember the filter because what if more than 51 animes were passing the filter they'd need to be on a second page
 * fixed the search filtering it now remembers the tags and changes the page numbers accordingly
 * researching lazy loading
+* implemented lazy loading using library, worked somehow but not for all images so scrapped
+* 
