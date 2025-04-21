@@ -64,3 +64,4 @@ This is my final project to a subject.
 * added anime_tags table to be middle man between anime and its multiple tags
 * updated all anime endpoints to work with the new anime table and anime_tags table
 * updated search js function to work with the updated endpoint
+* found annoying thing in the new tag filters, when a tag is set all the animes that passed that filter gets their genres changed to only that selected tag, fixed it after a couple of minutes
