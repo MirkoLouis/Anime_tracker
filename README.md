@@ -62,3 +62,5 @@ This is my final project to a subject.
 * deployed with 9765 animes didn't take too long to load, the randomizer was the one that took a hit i think its because it randomizing through the whole 9765 animes
 * and now we address the database issue, before one tag to one anime relationship which shouldn't have been
 * added anime_tags table to be middle man between anime and its multiple tags
+* updated all anime endpoints to work with the new anime table and anime_tags table
+* updated search js function to work with the updated endpoint
