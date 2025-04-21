@@ -58,3 +58,7 @@ This is my final project to a subject.
 * researching lazy loading
 * implemented lazy loading using library, worked somehow but not for all images so scrapped
 * deployed my website online to test native lazy loading, it works for the most part, not all sections show up immediately, new, upcoming and featured sections do work immediately so thats good
+* seen the shifting issue first hand damn it looks so obvious, fixed it same day
+* deployed with 9765 animes didn't take too long to load, the randomizer was the one that took a hit i think its because it randomizing through the whole 9765 animes
+* and now we address the database issue, before one tag to one anime relationship which shouldn't have been
+* added anime_tags table to be middle man between anime and its multiple tags
