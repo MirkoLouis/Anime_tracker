@@ -65,3 +65,6 @@ This is my final project to a subject.
 * updated all anime endpoints to work with the new anime table and anime_tags table
 * updated search js function to work with the updated endpoint
 * found annoying thing in the new tag filters, when a tag is set all the animes that passed that filter gets their genres changed to only that selected tag, fixed it after a couple of minutes
+* moved watchlist to a new page and made it so that when watchlist page changes it jumps to the top of the page
+* preferred the last one so reverting everything back and added a simple sort of the watchlist by last_updated, all newly added or newly changed status anime are moved to the top
+* 
