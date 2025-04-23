@@ -70,5 +70,5 @@ This is my final project to a subject.
 * added a completed watchlist, changed the endpoints to also accomodate the new completed watchlist
 * users can now freely switch between watchlist and completed watchlist
 * switched the positionsof most watchlist and new and upcoming sections the current order is now: spotlight, most watchlist, newa and upcoming, featured and random
-* finally fixed the footer's position
+* finally fixed the footer's position, also changed the favicon location to public folder
 * added a thumb image to featured section (friend suggested) but depending on the screen size that thumb image is too far to the left or too far to the right
